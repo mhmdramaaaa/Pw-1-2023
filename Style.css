@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set background color for the body */
+body {
+    font-family: 'Fredericka the Great', serif;
+    background-color: grey;
+    color: black;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the header */
+header {
+    
+    background-color: black
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 9px 8px rgba(0,0,0,0.4);
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+/* Style sections */
+section {
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 9px 8px rgba(0, 0, 0, 0.3);
+}
+section h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+/* Style the footer */
+footer {
+    font-family: 'Alumni Sans Collegiate One', sans-serif;
+    text-align: center;
+    padding: 10px 0;
+    background-color: black;
+    color: white;
+    box-shadow: 0 9px 8px rgba(0, 0, 0, 0.4);
+}
+.author{
+  background-color: white;
+  color: white;
+  text-align: ;
+  font-size: 1,8em;
+  margin: 10px;
+  border-radius: 10px;
+}
+.pembuat {
+width: 900px;
+border-radius: 10px;
+margin: 10px auto; 
+background-color: grey;
+padding: 2rem; color: white;
+}
