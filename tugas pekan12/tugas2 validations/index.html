@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validation Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <form id="validationForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" maxlength="30" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br>
+        
+        <label for="departureTime">Departure Time:</label>
+        <input type="text" id="departureTime" placeholder="HH:MM (24-hour format)" required><br><br>
+        
+        <label for="numTickets">Number of Tickets:</label>
+        <input type="number" id="numTickets" min="1" max="10" required><br><br>
+        
+        <button type="button" onclick="validateForm()">Submit</button>
+    </form>
+
+    <p id="errorDisplay" class="error"></p>
+    <div id="formDataDisplay"></div>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const departureTime = document.getElementById('departureTime').value;
+            const numTickets = document.getElementById('numTickets').value;
+
+            const errorDisplay = document.getElementById('errorDisplay');
+            const formDataDisplay = document.getElementById('formDataDisplay');
+
+            errorDisplay.innerHTML = ''; // Clear previous error messages
+
+            // Validate name (required, maximum 30 characters)
+            if (name.length === 0 || name.length > 30) {
+                errorDisplay.innerHTML += "Name is required (maximum 30 characters).<br>";
+            }
+
+            // Validate email (required, email format)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errorDisplay.innerHTML += "Email is required and must be in valid format.<br>";
+            }
+
+            // Validate departure time (required, 24-hour format)
+            const timePattern = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            if (!timePattern.test(departureTime)) {
+                errorDisplay.innerHTML += "Departure time is required and must be in 24-hour format (HH:MM).<br>";
+            }
+
+            // Validate number of tickets (required, integer between 1-10)
+            if (isNaN(numTickets) || numTickets < 1 || numTickets > 10 || numTickets % 1 !== 0) {
+                errorDisplay.innerHTML += "Number of tickets is required and must be an integer between 1 and 10.<br>";
+            }
+
+            // Display form data if no errors
+            if (errorDisplay.innerHTML === '') {
+                formDataDisplay.innerHTML = `
+                    <h2>Form Data:</h2>
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Departure Time:</strong> ${departureTime}</p>
+                    <p><strong>Number of Tickets:</strong> ${numTickets}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
